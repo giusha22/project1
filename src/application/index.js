@@ -1,2 +1,4 @@
-export { UseForm } from "./Hooks/useForm";
-export { instance } from "./instance";
+// export { UseForm } from "./Hooks/useForm";
+export { UseForm } from "./Hooks/useForm" 
+
+export { instance } from "./instance"

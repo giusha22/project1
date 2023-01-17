@@ -34,6 +34,11 @@ export const UserIcon = () => {
                 <button onClick={()=>{
                     navigate("/register")
                 }}>register</button>
+
+                <button onClick={()=>{
+                    navigate("/login")
+                }}>Login</button>
+                
                 <button>profile</button>
                 </MenuItem>
              </Menu>
