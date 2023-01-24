@@ -1,4 +1,4 @@
-import { TextField } from '@mui/material'
+import { TextField, Typography } from '@mui/material'
 import React from 'react'
 
 export const TextFieldComponent = ({ name, label, value, onChange, error }) => {
@@ -10,7 +10,11 @@ export const TextFieldComponent = ({ name, label, value, onChange, error }) => {
     value={value}
     onChange={onChange}
     error={error}
-    helperText={error}
+    helperText={
+        <Typography component="span" variant='body2'>
+            {error}
+        </Typography>
+    }
     
     />
 
