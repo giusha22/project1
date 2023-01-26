@@ -9,11 +9,9 @@ import { useCartItems } from '../../redux';
 import { CartDrawer } from './CartDrawer';
 
 const StyledAppBar = styled(AppBar)(()=>({
-  background:"#fff",
-  color:"#103B66",
-  width:"calc(100%- 255px)",
-  padding:"0 100px 0 30px",
-  display:"flex"
+  background:'lightGreen',
+  color:"#fff",
+  padding:"5px 30px"
 
 }));
 const StyledToolBar = styled(Toolbar)(()=>({
@@ -37,7 +35,10 @@ export const Header = () => {
   const cartItemsQuantity = cartItems.reduce((acc,curr)=>acc+curr.quantity,0);
   const [isCartOpen,setIsCartOpen] = useState(false);
   console.log("isCartOpen",isCartOpen);
-
+  // const cartItemsQuantity = cartItem.reduce(
+  //   (acc, curr) => acc + curr.quantity,
+  //   0
+  // );
 
   return (
     <Box>

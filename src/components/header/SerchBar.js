@@ -1,10 +1,13 @@
 import { Autocomplete, Box, TextField } from '@mui/material'
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useSerchResult } from '../../redux';
+import { fetchQuertProducts, setSearchResults } from '../../redux/silices/ProductSlice';
 import { Typography } from '../shared';
 
 const SerchBar = () => {
+  const dispatch = useDispatch()
   const searchv = useSerchResult()
   const [searchValue,setSearchValue] = useState("");
   console.log("searchv",searchv);
@@ -12,15 +15,15 @@ const SerchBar = () => {
   // const searchResult = useSerchResult();
   // console.log("searchResult",searchResult);
   useEffect(()=>{
-    console.log("shemidis line 9");
-  const timerId = setTimeout(()=>{
-    // if(searchValue){
-      // gavagzanot reqvesti
-    // }
-
-    console.log("value",searchValue);
-    },1000);
-
+    const timerId = setTimeout(() => {
+      console.log("searchValue", searchValue);
+      if (searchValue) {
+        //request-ს ვაგზავნით
+        dispatch(fetchQuertProducts(searchValue));
+      } else {
+        dispatch(setSearchResults());
+      }
+    }, 1000);
     return ()=>{
       console.log("shemodis line 14");
       clearTimeout(timerId)

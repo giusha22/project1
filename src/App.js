@@ -14,7 +14,7 @@ const StyledComponentContainer = styled(Box)(()=>({
   marginTop:"70px",
   background:"white",
   minHeight:"100vh"
-}))
+})) 
 const App = () => {
 
   const dispatch = useDispatch();

@@ -22,7 +22,6 @@ const UserSlice = createSlice({
         userData:null,
         error:null,
         message:"",
-        hello : [],
     },
     reducers:{
         logoutUser:(state)=>{
@@ -43,7 +42,7 @@ const UserSlice = createSlice({
         });
         builder.addCase(authenticateUser.rejected, (state) => {
             state.loading = false;
-            state.error = "something went wrong";
+            state.error = "something went wrong (authenticateUser)";
         });
     },
 });

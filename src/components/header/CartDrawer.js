@@ -14,7 +14,8 @@ const StyledBox = styled(Box)(()=>({
 export const CartDrawer = ({ isOpen, onClose }) => {
     const cartItems = useCartItems();
     const userInfo = useUserInfo();
-    console.log("userInfo",userInfo);
+    console.log("userInfo",userInfo, "cartItems",cartItems)
+    
     const dispatch = useDispatch();
   return (
     <Drawer open={isOpen} onClose={onClose} anchor="right">

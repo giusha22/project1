@@ -1,10 +1,11 @@
-import { FormControl } from '@mui/material';
+ 
 import React from 'react'
+import { FormControl } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { UseForm } from '../../application';
 import { authenticateUser } from '../../redux';
-import { TextFieldComponent } from '../shared/TextFields';
+import { TextFieldComponent } from '../shared';
 
 const generateLoginFormValues = () => {
   return{
@@ -33,15 +34,15 @@ export const LoginForm = () => {
     const naviagete = useNavigate();
 
     const onLogin = (e)=>{
-      e.preventDefault();
-      const email = loginFormValues.email.value
-      const password = loginFormValues.password.value
-      dispatch(authenticateUser(
-        {formValues:{email, password},
-         isLogin:true}))
-      .unwrap()
-      .then(()=>naviagete("/"))
-    };
+        e.preventDefault();
+        const email = loginFormValues.email.value
+        const password = loginFormValues.password.value
+        dispatch(authenticateUser(
+            {formValues:{email, password},
+             isLogin:true}))
+          .unwrap()
+          .then(()=>naviagete("/"))
+      };
 
     return (
     <FormControl fullWidth>

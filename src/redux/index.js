@@ -33,7 +33,7 @@ export {
     saveProduct,
     fetchHomePageProducts,
     fetchCategoryProducts,
-    fetchQueryProducts,
+    fetchQuertProducts,
     rateProduct,
     //reducer
      setSelectedProduct,

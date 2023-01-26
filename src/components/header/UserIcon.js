@@ -1,4 +1,4 @@
-import { Avatar, Box, IconButton, Menu, MenuItem } from '@mui/material'
+import { Avatar, Box, Button, IconButton, Menu, MenuItem } from '@mui/material'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -16,9 +16,10 @@ export const UserIcon = () => {
     console.log("userInfo",userInfo);
   return (
     <Box>
-        <IconButton onClick={(e)=>{
-            setAnchor(e.currentTarget)
-        }}>
+         <Button onClick={()=>{
+                    navigate("/")
+                }}>Home</Button>
+         <IconButton onClick={(e)=>{setAnchor(e.currentTarget)}}>
             <Avatar>{getUserInitials(userInfo?.firstName,userInfo?.lastName)}</Avatar>
         </IconButton>
         <Box>
@@ -38,29 +39,28 @@ export const UserIcon = () => {
              >
               {!!userInfo && 
             <MenuItem>
-                <button onClick={()=>{
+                <Button onClick={()=>{
                     dispatch(logoutUser())
-                }}>Logout</button>
-                <button>profile</button>
+                }}>Logout</Button>
+                <Button>profile</Button>
             </MenuItem>}
             {isUserAdmin(userInfo) && <MenuItem>
-            <button onClick={()=>{
+            <Button onClick={()=>{
                     navigate("/products/new")
-                }}>add product</button>
-                 <button onClick={()=>{
-                    navigate("/")
-                }}>Home</button>
+                }}>add product</Button>
+                
             </MenuItem>
             }
+            
                 {!userInfo && 
             <MenuItem>
-                <button onClick={()=>{
+                <Button onClick={()=>{
                     navigate("/register")
-                }}>register</button>
+                }}>register</Button>
 
-                <button onClick={()=>{
+                <Button onClick={()=>{
                     navigate("/login")
-                }}>Login</button>
+                }}>Login</Button>
                 
             </MenuItem>}
 
