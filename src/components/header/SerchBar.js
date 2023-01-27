@@ -8,12 +8,9 @@ import { Typography } from '../shared';
 
 const SerchBar = () => {
   const dispatch = useDispatch()
-  const searchv = useSerchResult()
   const [searchValue,setSearchValue] = useState("");
-  console.log("searchv",searchv);
-  // const searchProducts = useSearchProduc();
-  // const searchResult = useSerchResult();
-  // console.log("searchResult",searchResult);
+  const searchResult = useSerchResult();
+  console.log("searchResult",searchResult);
   useEffect(()=>{
     const timerId = setTimeout(() => {
       console.log("searchValue", searchValue);
@@ -73,7 +70,7 @@ const SerchBar = () => {
     // sx={{ width : 300 }}
     // disableClearable 
     // options={options}
-    // renderOption={(_,option)=>{
+    // renderOption={(_,option)=>{}
     //   console.log("option",option); 
     //   return <Link to="/" key={option._id} state={{}}>
     //     <Box sx={{display:"flex"}}>

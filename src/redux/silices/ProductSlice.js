@@ -30,7 +30,6 @@ export const fetchCategoryProducts = createAsyncThunk(
 export const fetchQuertProducts = createAsyncThunk(
   "product/fetchQuertProducts",
   async (name) => {
-    console.log("name", name);
     const { data } = await instance.get(`/products?name=${name}`);
     return data;
   }
@@ -73,6 +72,7 @@ const productSlice = createSlice({
     singleProduct: null,
     error: null,
   },
+
   reducers: {
     setSelectedProduct: (state, action) => {
       state.selectedProduct = action.payload.product;
@@ -81,6 +81,7 @@ const productSlice = createSlice({
       state.searchResult = [];
     },
   },
+
   extraReducers: (builder) => {
     builder.addCase(saveProduct.pending, (state) => {
       state.loading = true;
@@ -90,8 +91,9 @@ const productSlice = createSlice({
     });
     builder.addCase(saveProduct.rejected, (state) => {
       state.loading = false;
-      state.error = "something went wrong";
+      state.error = "something went wrong (saveProduct)";
     });
+
     builder.addCase(fetchHomePageProducts.pending, (state) => {
       state.loading = true;
     });
@@ -102,7 +104,7 @@ const productSlice = createSlice({
     });
     builder.addCase(fetchHomePageProducts.rejected, (state) => {
       state.loading = false;
-      state.error = "could not fetch home page products, please refresh";
+      state.error = " could not fetch home page products";
     });
 
     builder.addCase(fetchCategoryProducts.pending, (state) => {
@@ -114,8 +116,9 @@ const productSlice = createSlice({
     });
     builder.addCase(fetchCategoryProducts.rejected, (state) => {
       state.loading = false;
-      state.error = "could not fetch  category, please refresh";
+      state.error = " could not fetch  categorty";
     });
+
     builder.addCase(fetchQuertProducts.pending, (state) => {
       state.loading = true;
     });
@@ -127,6 +130,7 @@ const productSlice = createSlice({
       state.loading = false;
       state.error = "oops something went wrong";
     });
+
     builder.addCase(fetchSingleProductById.pending, (state) => {
       state.loading = true;
     });
@@ -136,9 +140,11 @@ const productSlice = createSlice({
     });
     builder.addCase(fetchSingleProductById.rejected, (state) => {
       state.loading = false;
-      state.error = "could not get product";
+      state.error = "some error";
     });
   },
 });
+
+
 export const { setSelectedProduct, setSearchResults } = productSlice.actions;
 export const productReducer = productSlice.reducer;

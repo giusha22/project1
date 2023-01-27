@@ -57,7 +57,7 @@ export const useSelectedProduct = ()=>useSelector((state)=>state.product.selecte
 export const useCategories = ()=>useSelector((state)=>state.product.categories);
 export const useHomePageProducts = ()=>useSelector((state)=>state.product.homePageProducts);
 export const useCategoryProducts = ()=>useSelector((state)=>state.product.categoryProducts);
-export const useSerchResult = ()=>useSelector((state)=>state.product.searchResults)
+export const useSerchResult = ()=>useSelector((state)=>state.product.searchResult)
 
 
 //cart hooks

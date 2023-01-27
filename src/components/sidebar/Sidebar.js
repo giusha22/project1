@@ -7,7 +7,9 @@ import { SidebarHeader } from './SidebarHeader'
 
 const StyledListItem = styled(ListItem)(()=>({
     padding:"5px 0px 3px 15px",
-    margin:"0px"
+    margin:"0px",
+    background:"yellow"
+    
 }))
 
 export const Sidebar = () => {

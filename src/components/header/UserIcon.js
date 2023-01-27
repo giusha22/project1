@@ -16,9 +16,6 @@ export const UserIcon = () => {
     console.log("userInfo",userInfo);
   return (
     <Box>
-         <Button onClick={()=>{
-                    navigate("/")
-                }}>Home</Button>
          <IconButton onClick={(e)=>{setAnchor(e.currentTarget)}}>
             <Avatar>{getUserInitials(userInfo?.firstName,userInfo?.lastName)}</Avatar>
         </IconButton>

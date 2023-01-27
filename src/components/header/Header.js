@@ -11,7 +11,8 @@ import { CartDrawer } from './CartDrawer';
 const StyledAppBar = styled(AppBar)(()=>({
   background:'lightGreen',
   color:"#fff",
-  padding:"5px 30px"
+  paddingLeft:"270px",
+  paddingRight:"50px"
 
 }));
 const StyledToolBar = styled(Toolbar)(()=>({
@@ -44,7 +45,7 @@ export const Header = () => {
     <Box>
         <StyledAppBar>
           <StyledToolBar>
-            <Link to="/">home</Link>
+            <Link to="/">HOME</Link>
             <SerchBar/> 
             <UserIcon/>
             <Button onClick={()=>setIsCartOpen(true)}>
