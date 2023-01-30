@@ -25,15 +25,13 @@ export const fetchCategoryProducts = createAsyncThunk(
     const { data } = await instance.get(`/products/categories/${url}`);
     return data;
   }
-);
+);  
 
-export const fetchQuertProducts = createAsyncThunk(
-  "product/fetchQuertProducts",
-  async (name) => {
-    const { data } = await instance.get(`/products?name=${name}`);
-    return data;
-  }
-);
+
+export const fetchQueryProducts =createAsyncThunk("product/fetchQueryProducts",async(name)=>{
+  const {data} = await instance.get(`/products?name=${name}`);
+  return data
+})
 
 export const fetchSingleProductById = createAsyncThunk(
   "product/fetchSingleProductById",
@@ -45,19 +43,21 @@ export const fetchSingleProductById = createAsyncThunk(
 
 export const rateProduct = createAsyncThunk(
   "/product/rateProduct",
-  async ({ productId, userId, url, rating }, { dispatch }) => {
+  async ({ productId, userId, url, rating, isHome }, { dispatch }) => {
     console.log("url", url);
 
     await instance.post(`products/${productId}/users/${userId}/rate`, {
       rating,
     });
 
-    if (url !== "/") {
+    if (!isHome) {
       dispatch(fetchCategoryProducts(url));
     } else {
       dispatch(fetchHomePageProducts());
     }
+
   }
+
 );
 
 const productSlice = createSlice({
@@ -119,14 +119,14 @@ const productSlice = createSlice({
       state.error = " could not fetch  categorty";
     });
 
-    builder.addCase(fetchQuertProducts.pending, (state) => {
+    builder.addCase(fetchQueryProducts.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(fetchQuertProducts.fulfilled, (state, action) => {
+    builder.addCase(fetchQueryProducts.fulfilled, (state, action) => {
       state.loading = false;
       state.searchResult = action.payload.products;
     });
-    builder.addCase(fetchQuertProducts.rejected, (state, action) => {
+    builder.addCase(fetchQueryProducts.rejected, (state, action) => {
       state.loading = false;
       state.error = "oops something went wrong";
     });
@@ -140,7 +140,7 @@ const productSlice = createSlice({
     });
     builder.addCase(fetchSingleProductById.rejected, (state) => {
       state.loading = false;
-      state.error = "some error";
+      state.error = "could not get product";
     });
   },
 });

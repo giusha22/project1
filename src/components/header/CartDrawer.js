@@ -14,7 +14,7 @@ const StyledBox = styled(Box)(()=>({
 export const CartDrawer = ({ isOpen, onClose }) => {
     const cartItems = useCartItems();
     const userInfo = useUserInfo();
-    console.log("userInfo",userInfo, "cartItems",cartItems)
+    // console.log("userInfo",userInfo, "cartItems",cartItems)
     
     const dispatch = useDispatch();
   return (

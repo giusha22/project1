@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { isUserAdmin } from '../../application';
 import { addToCart, rateProduct, removeFromCart, setSelectedProduct, useCartItems, useUserInfo } from '../../redux';
+import { Ratings } from './Rating';
 const StyledCardContainer = styled(Box)(()=>({
     display:"felx",
     flexDirection:"colum",
@@ -32,12 +33,13 @@ export const ProductCard = ({name,_id,description,brand,price,category,image,ave
         category,
         brand,   
         description,
+        averageRating,
       }
     }))
     navigate(`/products/edit/${name}`)
   }
   const {pathname, search} = useLocation();
-  console.log("location",`${pathname}${search}` );
+  // console.log("location",`${pathname}${search}` );
 
   const onRatingChange =(e)=>{
      console.log("e.target.value",e.target.value);
@@ -52,7 +54,7 @@ export const ProductCard = ({name,_id,description,brand,price,category,image,ave
     
   <Grid item>
     <Card>
-      <Link to={"/products/categories/categoryName/name"}>
+      <Link to={`/products/categories/${category}/${name}`} state={{ id: _id}}>
      <img src={image} alt={`${category} ${name}`} width="200px" height="200px" />
      <StyledCardContainer>
        <Typography>{name}</Typography>
@@ -60,7 +62,7 @@ export const ProductCard = ({name,_id,description,brand,price,category,image,ave
     </StyledCardContainer>
    </Link>
         <CardActions>
-          <Rating value={averageRating} isDisable={!!userInfo} onChange={onRatingChange}/>
+          <Ratings value={averageRating} isDisabled={!userInfo} onChange={onRatingChange}/>
           <StyledBox>
             {isProductInCart ? (
               <>

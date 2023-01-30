@@ -33,11 +33,12 @@ export {
     saveProduct,
     fetchHomePageProducts,
     fetchCategoryProducts,
-    fetchQuertProducts,
+    fetchQueryProducts,
     rateProduct,
+    fetchSingleProductById,
     //reducer
      setSelectedProduct,
-
+     setSearchResults,
      } from "./silices/ProductSlice"
      
      // cart action creators
@@ -57,8 +58,9 @@ export const useSelectedProduct = ()=>useSelector((state)=>state.product.selecte
 export const useCategories = ()=>useSelector((state)=>state.product.categories);
 export const useHomePageProducts = ()=>useSelector((state)=>state.product.homePageProducts);
 export const useCategoryProducts = ()=>useSelector((state)=>state.product.categoryProducts);
-export const useSerchResult = ()=>useSelector((state)=>state.product.searchResult)
+// export const useSerchResult = ()=>useSelector((state)=>state.product.searchResult)
+export const useSingleProduct = ()=>useSelector((state)=>state.product.singleProduct);
 
-
+export const useSearchResult = ()=>useSelector((state)=>state.product.searchResult);
 //cart hooks
 export const useCartItems = ()=> useSelector((state) => state.cart.cartItems );
